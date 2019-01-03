@@ -2,9 +2,13 @@ import * as express from 'express';
 
 const app = express();
 
-app.get('/:name', (req, res) => {
-  const name = req.params.name;
-  res.send(`Hello, ${name}`);
+app.get('/hello', (req, res) => {
+  const name = req.query.name;
+  res.json({
+    from: 'typescript-pact-provider-demo',
+    hello: name,
+    timestamp: Date.now()
+  });
 });
 
 app.listen(3000, () => {
